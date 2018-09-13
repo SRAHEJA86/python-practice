@@ -13,7 +13,7 @@ try:
             
           def parse_csv(myFile):
                 dateparse = lambda x: pd.datetime.strptime(x, '%Y-%m-%d %H:%M:%S')# required for extraction of date from datetime
-                parsed_data = pd.read_csv(myFile,parse_dates=['datetime'],date_parser=dateparse)
+                parsed_data = pd.read_csv(myFile,parse_dates=['ds'],date_parser=dateparse)
                 print(parsed_data.head(2))#prints the first 2 rows
                 return parsed_data
 
@@ -23,12 +23,12 @@ try:
                 return parsed_data_without_null
             
           def aggregate_by_date(parsed_data_without_null):
-                # to extract date from datetime 
-                pd.to_datetime(parsed_data_without_null['datetime'],format='%Y%m%d', errors='ignore').dt.date
-                parsed_data_without_null.groupby('datetime').sum()#aggregate the weather data on the basis of dates
-
+                # to extract date from datetime
+                df1 = parsed_data_without_null.copy()
+                df1['ds'] = pd.to_datetime(df1['ds'],format='%Y%m%d', errors='ignore').dt.date
+                df1=df1.groupby(['ds','Year'])[["Vancouver", "Portland", "San Francisco","Seattle"]].sum()#aggregate the weather data on the basis of dates
                 # Writing the modified data into csv file
-                parsed_data_without_null.to_csv("modified.csv",columns=['ds','Year','Vancouver','Portland','San Francisco','Seattle'])
+                df1.to_csv("modified.csv")
             
 
 except Exception as e:

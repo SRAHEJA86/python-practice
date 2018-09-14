@@ -16,3 +16,14 @@ Please follow the steps below to execute the csv file parsing:
 1. Go to command prompt and  type parse_csv.py -f <csv-file-location>
   for example : parse_csv.py -f "C:\Users\ABC\Test\raw.csv"
 2. The output csv file would be saved in the current working directory with name modified.csv
+  
+For executing the pytest please follow the steps below 
+1. Go to command prompt and type the following command
+   pytest test_parseCSV.py --cmdopt=<csv-file-location>
+   where cmdopt is the argument where you need to give the csv filepath 
+   
+   Example:
+   pytest test_parseCSV.py --cmdopt=C:\Users\Kshitij" Popli\Desktop\PythonPractice\raw.csv
+   
+   It will then display the number of tests passed/failed
+   

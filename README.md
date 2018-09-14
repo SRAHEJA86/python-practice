@@ -7,9 +7,9 @@ This file is simply used to call the functions of parseCSV.py file
 To make the csv file location configurable,user can provide the filepath as a parameter in command prompt
 3. test_parseCSV.py
 This is the pytest file containing the unit test cases for parsing the CSV
-4.conftest.py
+4. conftest.py
 The file contains the configurations required to run the pytests
-5.modified.csv
+5. modified.csv
 The sample output.csv has been attached, which would be created in the current working directory when you run the parse_csv.py
 
 Please follow the steps below to execute the csv file parsing:
